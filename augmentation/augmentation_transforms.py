@@ -27,9 +27,11 @@ import numpy as np
 from PIL import ImageOps, ImageEnhance, ImageFilter, Image
 # pylint:enable=g-multiple-import
 
-import tensorflow as tf
+#import tensorflow as tf
 
-FLAGS = tf.flags.FLAGS
+#import cv2
+
+#FLAGS = tf.flags.FLAGS
 
 
 IMAGE_SIZE = 32
@@ -188,7 +190,7 @@ def pil_wrap(img, use_mean_std):
   img_ori = (img * STDS + MEANS) * 255
 
   return Image.fromarray(
-      np.uint8((img * STDS + MEANS) * 255.0)).convert('RGBA')
+      np.uint8((img * STDS + MEANS) * 255.0)).convert('RGBA')#RGBA!
 
 
 def pil_unwrap(pil_img, use_mean_std, img_shape):
@@ -219,7 +221,8 @@ def apply_policy(policy, img, use_mean_std=True):
     The result of applying `policy` to `img`.
   """
   img_shape = img.shape
-  pil_img = pil_wrap(img, use_mean_std)
+  pil_img = pil_wrap(img, use_mean_std)#RGBA!
+  
   for xform in policy:
     assert len(xform) == 3
     name, probability, level = xform

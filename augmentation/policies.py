@@ -19,7 +19,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import tensorflow as tf
+#import tensorflow as tf
 
 
 def imagenet_policies():
@@ -64,7 +64,7 @@ def get_trans_list():
 
 def randaug_policies():
   trans_list = get_trans_list()
-  tf.logging.info("trans_list: %s", str(trans_list))
+  #tf.logging.info("trans_list: %s", str(trans_list))
   op_list = []
   for trans in trans_list:
     for magnitude in range(1, 10):
