@@ -132,5 +132,9 @@ cifar10/cifar-10-batches-py
 
 # python
 __pycache__/
+
 # model
 model/
+
+#tensorboard
+event*
