@@ -62,7 +62,7 @@ def main():
         unlabeled_criterion=unlabeled_criterion.cuda()
         model=model.cuda()        
     #注意，如果想要使用.cuda()方法来将model移到GPU中，一定要确保这一步在构造Optimizer之前。因为调用.cuda()之后，model里面的参数已经不是之前的参数了。
-    optimizer=optim.Adam(model.parameters(),lr=opt.lr,momentum=0.9,weight_decay=1e-4)
+    optimizer=optim.SGD(model.parameters(),lr=opt.lr,momentum=0.9,weight_decay=1e-4)
     start_epoch=0
     if opt.model_path:
         print('===> loading pretrained model')

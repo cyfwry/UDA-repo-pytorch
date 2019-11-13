@@ -126,7 +126,10 @@ dmypy.json
 
 
 # dataset
-cifar10/
+cifar10/cifar-10-batches-py
+*.tar.gz
+*.pkl
+
 # python
 __pycache__/
 # model

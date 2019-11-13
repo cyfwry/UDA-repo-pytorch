@@ -1,0 +1,30 @@
+import pickle
+import glob,os
+import random
+from PIL import Image
+import numpy as np
+address=r'.\cifar-10-batches-py\cifar10'
+image_list=glob.glob('.\cifar-10-batches-py\cifar10_train\*')
+sum=5000
+print(len(image_list))
+#read
+label_list=[]
+for i in range(10):
+    label_list+=[[]]
+for i in image_list:
+    img=Image.open(i)
+    img_array=np.asarray(img)
+    label_list[int(i[36])]+=[[img_array]]
+    
+for i in label_list:
+    random.shuffle(i)
+    
+train_dict={0:[],1:[],2:[],3:[],4:[],5:[],6:[],7:[],8:[],9:[]}
+val_dict={0:[],1:[],2:[],3:[],4:[],5:[],6:[],7:[],8:[],9:[]}
+for i in range(sum):
+    for j in range(10):
+        train_dict[j]+=label_list[j][i]
+        
+with open('full_sup.pkl','wb') as full:
+    pickle.dump(train_dict,full)
+
